@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <p>Welcome to the admin area.</p>
+  <button id="loadApi">Call API</button>
+  <pre id="output"></pre>
+
+  <script>
+    document.getElementById('loadApi').addEventListener('click', async () => {
+      try {
+        const res = await fetch('./api/hello.js'); // static file
+        const text = await res.text();
+        document.getElementById('output').textContent = text;
+      } catch (err) {
+        document.getElementById('output').textContent = 'Error: ' + err;
+      }
+    });
+  </script>
+</body>
+</html>
